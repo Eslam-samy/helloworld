@@ -1,0 +1,71 @@
+query getStoresOfASingleCategory($typeId: ID,$paginate:paginationInput) {
+    StoreQuery {
+        getAll(filter: { storeTypeId: $typeId },pagination:$paginate) {
+            status
+            message
+            pagination {
+                hasNextPage
+                nextPage
+                page
+            }
+            Stores : data {
+                _id
+                name
+                ImageResponse {
+                    data {
+                        name
+                    }
+                }
+                storeTypeId
+                adminUserId
+            }
+        }
+    }
+}
+
+
+query singleStoreHeader($storeId: ID) {
+    StoreQuery {
+        get(_id: $storeId) {
+            status
+            message
+            StoreDetail:data {
+                _id
+                name
+                productTypeIds
+                ImageResponse {
+                    data {
+                        name
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+query singleStore($filter: StoreFilterInput) {
+    StoreQuery {
+        getAll(filter : $filter) {
+            status
+            message
+            CurrentStore:data{
+                _id
+                name
+                ProductTypesStore:ProductTypesResponse{
+                    status
+                    message
+                    data{
+                        _id
+                        name
+                        ImageResponse {
+                            data {
+                                name
+                            }
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

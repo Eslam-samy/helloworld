@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ED1967</color>
+    <color name="colorPrimaryDark">#ED1967</color>
+    <color name="colorAccent">#F15F26</color>
+
+    <color name="white">#ffffff</color>
+    <color name="black">#000000</color>
+
+    <color name="colorNull">#00000000</color>
+    <color name="colorIcons">#7C7F81</color>
+    <color name="colorPrimaryText">#1e1e1e</color>
+    <color name="colorWhite">#FFFFFF</color>
+    <color name="colorWhiteDark">#DBDBDB</color>
+    <color name="colorPrimaryLight">#CA7474</color>
+    <color name="colorBackground">#F4F7F7</color>
+
+    <color name="colorCharcoal">#323A61</color>
+    <color name="colorIndiaRed">#D25757</color>
+
+    <color name="colorManatee">#9B9EA9</color>
+    <color name="colorGray">#7B7F8F</color>
+    <color name="colorDavyGray">#5D5D5D</color>
+    <color name="colorDarkGray">#A3A3A3</color>
+    <color name="colorOuterSpace">#40434D</color>
+
+    <color name="approved">#46C93A</color>
+    <color name="rejected">#FF4757</color>
+    <color name="canceled">#8388A4</color>
+    <color name="delivered">#46C93A</color>
+    <color name="shipped">#1F74FF</color>
+    <color name="requested">#ffba00</color>
+
+    <color name="blueLight">#4C69FF</color>
+    <color name="backgroundSplash">#23192d</color>
+    <color name="state_bottom_nav">#6E798A</color>
+
+</resources>

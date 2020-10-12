@@ -1,0 +1,23 @@
+query getAllCategories($paginate:paginationInput){
+    StoreTypeQuery {
+        getAll(pagination:$paginate){
+            status
+            message
+            pagination{
+                page
+                hasNextPage
+                nextPage
+            }
+            StoreCategory:data{
+                _id
+                name
+                ImageResponse{
+                    data{
+                        name
+                    }
+                }
+
+            }
+        }
+    }
+}

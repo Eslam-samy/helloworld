@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">hello world</string>
+    <string name="userName">Username</string>
+    <string name="phoneNumber">Phone Number</string>
+    <string name="password">Password</string>
+    <string name="signIn">Sign In</string>
+    <string name="welcomeBack">Wellcome back !!</string>
+    <string name="login">Login</string>
+    <string name="forgotPassword">Forgot password</string>
+    <string name="invalidPhone">Invalid phone number</string>
+    <string name="invalidPassword">Invalid Password</string>
+</resources>

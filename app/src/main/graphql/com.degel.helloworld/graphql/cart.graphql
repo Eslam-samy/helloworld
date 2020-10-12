@@ -1,0 +1,114 @@
+query MyCartQuery {
+    CartItemQuery {
+        myCart {
+            status
+            message
+            errors {
+                code
+                path
+                message
+                validValue
+            }
+            storeData: data {
+                Store {
+                    _id
+                    name
+
+                    ImageResponse {
+                        data {
+                            name
+                        }
+                    }
+                }
+                Items {
+                    _id
+
+                    PricingProduct {
+                        Product {
+                            _id
+                            name
+                            ImageResponse {
+                                data {
+                                    name
+                                }
+                            }
+                        }
+                        _id
+                        createdAt
+                        updatedAt
+                        storePrice
+                        storePrice
+                        amount
+
+                    }
+
+                    amount
+                    totalPrice
+
+                }
+                ItemsCount
+                TotalPrice
+            }
+            ItemsCount
+            TotalPrice
+            StoresCount
+        }
+    }
+}
+
+mutation createCartItem($data: createCartItem) {
+    CartItemMutation {
+        create(data: $data) {
+            status
+            message
+            errors {
+                code
+                path
+                message
+            }
+            data {
+                _id
+                userId
+                pricingProductId
+                amount
+            }
+        }
+    }
+}
+
+mutation updateCartItem($id: ID!, $data: updateCartItem) {
+    CartItemMutation {
+        update(_id: $id, data: $data) {
+            status
+            message
+            errors {
+                code
+                path
+                message
+                validValue
+            }
+            data {
+                _id
+                userId
+                pricingProductId
+                amount
+                createdAt
+                updatedAt
+            }
+        }
+    }
+}
+
+
+mutation RemoveCartItem($_id: ID!){
+    CartItemMutation{
+        remove(_id:$_id)
+        {
+            status
+            data{
+                _id
+                totalPrice
+            }
+        }
+    }
+}

@@ -1,0 +1,146 @@
+query getProductQuery($filter: ProductFilterInput){
+    ProductQuery{
+        getAll(filter: $filter){
+            status
+            message
+            pagination{
+                page
+                limit
+                hasNextPage
+                nextPage
+            }
+            Product:data{
+                _id
+                name
+                customerPrice
+                typeId
+            }
+        }
+    }
+}
+
+# ********** - This New - **********
+# getStoreProducts query: use to view Store Gallery
+# pass type Id to filter to get products priced and having type Id
+query getStoreProducts($storeId:ID! , $filter: storeGalleryFilter!){
+
+    PricingProductQuery{
+        getStoreProducts(storeId :$storeId  , filter :$filter){
+            status
+            message
+            pagination{
+                totalDocs
+                hasNextPage
+                hasPrevPage
+                limit
+                page
+                dataCount
+            }
+            Products : data{
+                _id
+                productId
+                storeId
+                storePrice
+                Product{
+                    _id
+                    name
+                    unitId
+                    typeId
+                    ImageResponse {
+                        status
+                        data {
+                            name
+                        }
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+# Get not priced By Query :
+#  used in store admin page to select products to add to prcing
+query getNotPricedBy($storeId: ID! , $filter: ProductFilterInput!){
+    ProductQuery{
+        getStoreProducts:getNotPricedBy(storeId:$storeId,filter:$filter){
+            status
+            message
+            Products:data{
+                _id
+                name
+                ImageResponse {
+                    status
+                    data {
+                        name
+                    }
+                }
+            }
+        }
+    }
+}
+
+
+mutation PricingProductMutation($data: createPricingProduct){
+    CreatePricingProduct:PricingProductMutation {
+        create(data :$data)
+        {
+            status
+            message
+            data{
+                _id
+                productId
+                storeId
+            }
+        }
+    }
+}
+
+#SingleProduct
+query SingleProduct($_id: ID) {
+    PricingProductQuery {
+        GetSingleProduct:get(_id:$_id) {
+
+            status
+            message
+            errors{
+                code
+                path
+                message
+            }
+
+            Product:data {
+                _id
+                productId
+                storePrice
+                StoreResponse{
+                    data{
+                        name
+                        ImageResponse {
+                            status
+                            data {
+                                name
+                            }
+                        }
+                    }
+                }
+                ProductResponse{
+                    ProductData:data{
+                        _id
+                        name
+                        customerPrice
+                        description
+                        ImageResponse {
+                            status
+                            data {
+                                name
+                            }
+                        }
+                    }
+                }
+
+
+            }
+        }
+    }
+}

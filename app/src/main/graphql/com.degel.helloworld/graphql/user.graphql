@@ -1,0 +1,147 @@
+mutation logIn($loginData:loginInput){
+    UserMutation{
+        login(data:$loginData){
+            status
+            message
+
+            token
+        }
+    }
+}
+
+query me{
+    UserQuery{
+        me{
+            status
+            message
+            UserData:data{
+                _id
+                phone
+                email
+                firstName
+                lastName
+                roleName
+                status
+                language
+                workStartDate
+                avatarImageId
+                createdAt
+                updatedAt
+
+                AvatarResponse{
+                    status
+                    data{
+                        name
+                    }
+                }
+
+                currentDeliveryAddress {
+                    _id
+                    name
+                    street
+                    region
+                    locationPoint {
+                        lat
+                        lng
+                    }
+                }
+                deliveryAddresses {
+                    _id
+                    locationPoint {
+                        lat
+                        lng
+                    }
+                    name
+                    cityId
+                    region
+                    building
+                    floor
+                    flat
+                    flatType
+                    street
+                }
+            }
+        }
+    }
+}
+
+mutation validatePhoneWithFireBase($phone:String!,$fireBaseToken:String!){
+    UserMutation{
+        validateFireBaseToken(phone:$phone,token:$fireBaseToken){
+            status
+            message
+            token
+        }
+    }
+}
+
+mutation signUpSecondStep($data: signupInput) {
+    UserMutation {
+        signup(data: $data) {
+            status
+            message
+            errors {
+                path
+                message
+                code
+            }
+        }
+    }
+}
+
+
+mutation updateUserInfo($data: userInfo) {
+    UserMutation {
+        updateInfo(data : $data)
+        {
+            status
+            message
+            token
+            errors {
+                path
+                message
+                code
+            }
+            data {
+                phone
+                language
+                currentDeliveryAddress {
+                    _id
+                    name
+                    locationPoint {
+                        lat
+                        lng
+                    }
+                }
+                deliveryAddresses {
+                    _id
+                    name
+                    locationPoint {
+                        lat
+                        lng
+                    }
+                }
+            }
+#            token
+        }
+    }
+}
+
+
+#For Cheack if user here before or no
+mutation validatePhone($data: loginInput){
+    UserMutation {
+        login(data :$data)
+        {
+            status
+            message
+            errors{
+                code
+                path
+                message
+                validValue
+            }
+
+        }
+    }
+}
